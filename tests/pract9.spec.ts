@@ -2,7 +2,7 @@ import "mocha";
 import {expect} from "chai";
 import {Nota} from '../src/ejercicio/Nota';
 import {OperacionesNotas} from '../src/ejercicio/OpcionesNota';
-
+/*
 describe('Test práctica 9', () => {
 
     let nota1 = new Nota("Prueba 1", "Probando clase Nota", "Rojo");
@@ -93,4 +93,6 @@ describe('Test práctica 9', () => {
 
     });
     */
+   /*
 });
+*/

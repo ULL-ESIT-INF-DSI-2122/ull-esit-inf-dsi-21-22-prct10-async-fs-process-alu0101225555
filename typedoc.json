@@ -1,11 +1,7 @@
 {
     "entryPoints": [
-        "./src/prueba.ts",
-        "./src/mod9/ReduceAlgorithm.ts",
-        "./src/mod9/templatemethod.ts",
-        "./src/ejercicio/menu.ts",
-        "./src/ejercicio/Nota.ts",
-        "./src/ejercicio/OpcionesNota.ts"
+        "./src/mod10/lectura.ts",
+        "./src/mod10/suma.ts"
     ],
     "out": "./docs"
 }
