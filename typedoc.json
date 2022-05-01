@@ -1,7 +1,9 @@
 {
     "entryPoints": [
         "./src/mod10/lectura.ts",
-        "./src/mod10/suma.ts"
+        "./src/mod10/suma.ts",
+        "./src/ejercicio4/main.ts",
+        "./src/ejercicio4/LComands.ts"
     ],
     "out": "./docs"
 }
