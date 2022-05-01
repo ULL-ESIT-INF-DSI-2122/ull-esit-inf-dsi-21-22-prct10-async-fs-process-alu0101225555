@@ -513,3 +513,13 @@ public copy(rutaOr: string, rutaDe: string) {
 ```
 
 **Nota**: si ejecutas los test del ejercicio 4, debes restaurar al estado previo para poder volver a ejecutarlos.
+
+## Conclusión
+
+En conclusión, el desarrollo de esta práctica considero que ha servido para afianzar conceptos de manejo de ficheros y procesos y los problemas surgidos en la práctica anterior con yargs han sido resueltos aunque los inconvenientes con chalk todavía no han sido solucionados.  
+
+## Enlaces
+
+- [src](src)
+- [test](tests)
+- [documentación](docs)
