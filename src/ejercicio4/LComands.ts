@@ -30,9 +30,9 @@ export class LComands {
      */
     public mkdir(ruta: string) {
         if(this.fs.existsSync(ruta)) {
-            this.fs.mkdirSync(ruta);
             return false;
         }else {
+            this.fs.mkdirSync(ruta);
             return true;
         }
     }
