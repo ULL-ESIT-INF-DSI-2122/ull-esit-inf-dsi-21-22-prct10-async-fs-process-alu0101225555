@@ -292,7 +292,7 @@ yargs.parse();
 
 Contiene las funciones necesarias que son llamadas desde el `main.ts`. Cada función corresponde a un posible comando:
 
-1. check(): Dada una ruta concreta, mostrar si es un directorio o un fichero. Se le pasa la ruta para analizar y devuelve como cadena si se trata de un directorio ó fichero, y en caso de error, devuelve `undefined`.
+- check(): Dada una ruta concreta, mostrar si es un directorio o un fichero. Se le pasa la ruta para analizar y devuelve como cadena si se trata de un directorio ó fichero, y en caso de error, devuelve `undefined`.
 
 ```
 public check(ruta: string): string | undefined {
@@ -308,7 +308,7 @@ public check(ruta: string): string | undefined {
     }
 ```
 
-2. mkdir(): Crear un nuevo directorio a partir de una nueva ruta que recibe como parámetro. Devuelve `false` en caso de error y `true` si todo se ejecutó correctamente.
+- mkdir(): Crear un nuevo directorio a partir de una nueva ruta que recibe como parámetro. Devuelve `false` en caso de error y `true` si todo se ejecutó correctamente.
 
 ```
 public mkdir(ruta: string) {
@@ -321,7 +321,7 @@ public mkdir(ruta: string) {
     }
 ```
 
-3. ls(): Listar los ficheros dentro de un directorio. Primero se asegura que la ruta proporcionada corresponde a un directorio y después guarda el contenido para mostrarlo. En caso contrario, mostrará error.
+- ls(): Listar los ficheros dentro de un directorio. Primero se asegura que la ruta proporcionada corresponde a un directorio y después guarda el contenido para mostrarlo. En caso contrario, mostrará error.
 
 ```
 public ls(ruta: string) {
@@ -352,7 +352,7 @@ public ls(ruta: string) {
     }
 ```
 
-4. cat(): Mostrar el contenido de un fichero. Primero se asegura que la ruta proporcionada corresponde a un fichero y después guarda el contenido para mostrarlo. En caso contrario, mostrará error.
+- cat(): Mostrar el contenido de un fichero. Primero se asegura que la ruta proporcionada corresponde a un fichero y después guarda el contenido para mostrarlo. En caso contrario, mostrará error.
 
 ```
 public cat(ruta: string) {
@@ -383,7 +383,7 @@ public cat(ruta: string) {
     }
 ```
 
-5. remove(): Borrar ficheros y directorios. Invoca previamente a la función `check()` y en en función de lo que devuelva ejecutará el comando para eliminar fichero, directorio o retornará `false` en caso de error.
+- remove(): Borrar ficheros y directorios. Invoca previamente a la función `check()` y en en función de lo que devuelva ejecutará el comando para eliminar fichero, directorio o retornará `false` en caso de error.
 
 ```
 public remove(ruta: string) {
@@ -403,7 +403,7 @@ public remove(ruta: string) {
     }
 ```
 
-6. move(): Mueve un fichero/directorio de una ruta a otra. Crea un proceso hijo que ejecuta `mv` con los parámetros correspondientes y devuelve `true` si todo salió correcto o `false` en caso contrario.
+- move(): Mueve un fichero/directorio de una ruta a otra. Crea un proceso hijo que ejecuta `mv` con los parámetros correspondientes y devuelve `true` si todo salió correcto o `false` en caso contrario.
 
 ```
 public move(rutaO: string, rutaD: string) {
@@ -418,7 +418,7 @@ public move(rutaO: string, rutaD: string) {
     }
 ```
 
-7. copy(): Copia un fichero/directorio. Implementación similar a `move` pero, en este caso, invocamos como proceso hijo al comando `cp` con sus respectivos parámetros.
+- copy(): Copia un fichero/directorio. Implementación similar a `move` pero, en este caso, invocamos como proceso hijo al comando `cp` con sus respectivos parámetros.
 
 ```
 public copy(rutaOr: string, rutaDe: string) {
