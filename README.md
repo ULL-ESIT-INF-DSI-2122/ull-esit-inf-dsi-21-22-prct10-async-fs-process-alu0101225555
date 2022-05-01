@@ -8,6 +8,104 @@ alu0101225555
 
 [![Tests](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct10-async-fs-process-alu0101225555/actions/workflows/node.js.yml/badge.svg)](https://github.com/ULL-ESIT-INF-DSI-2122/ull-esit-inf-dsi-21-22-prct10-async-fs-process-alu0101225555/actions/workflows/node.js.yml)
 
+## Ejercicio 1
+
+**Desarrollo:**
+
+*Paso 0:* Se inician todas las colas vacías.
+
+|   Stack   |   API     |   Queue   |   Output  |
+|:---------------------------------------------:|
+
+*Paso 1:* La función `main` anónima entra en la pila.
+
+|   Stack   |   API     |   Queue   |   Output  |
+|:---------------------------------------------:|
+|   `main()`|           |           |           |
+
+*Paso 2:* Las librerías y los argumentos son cargados. Además, se introduce `access` en la API. 
+
+|   Stack   |   API     |   Queue   |   Output  |
+|:---------------------------------------------:|
+|   `main()`| `access()`|           |           |
+
+*Paso 3:* Cuando la función `main` termina, `access` sale de la API y el `callback` entra en la cola de las tareas (`Queue`).
+
+|   Stack   |   API     |   Queue       |   Output  |
+|:-------------------------------------------------:|
+|           |           |`callback()`   |           |
+
+*Paso 4:* `callback` entra en la pila para ejecutar la función y retornar el valor.
+
+|   Stack                                           |   API     |   Queue       |   Output  |
+|:-----------------------------------------------------------------------------------------:|
+|`callback()`                                       |           |               |           |
+|console.log(`Starting to watch file ${filename}`); |           |               |           |
+
+*Paso 5:* `Output` retorna el valor calculado en la función que estaba en la pila.
+
+|   Stack       |   API     |   Queue       |   Output                                          |
+|:---------------------------------------------------------------------------------------------:|
+|`callback()`   |           |               |                                                   |
+|               |           |               |console.log(`Starting to watch file ${filename}`); |
+
+*Paso 6:* Entra `watch` en la pila para ejecutarse.
+
+|   Stack                                           |   API     |   Queue       |   Output  |
+|:-----------------------------------------------------------------------------------------:|
+|`callback()`                                       |           |               |           |
+|`watch()`                                          |           |               |           |
+
+*Paso 7:* Una vez se ejecuta `watch`, llama a `watcher.on` y la añade a la API.
+
+|   Stack                                           |   API         |   Queue  |   Output   |
+|:-----------------------------------------------------------------------------------------:|
+|`callback()`                                       |`watcher.on()` |          |            |
+
+*Paso 8:* Se añade y ejecuta la siguiente función en la pila.
+
+|   Stack                                               |   API     |   Queue       |   Output  |
+|:---------------------------------------------------------------------------------------------:|
+|`callback()`                                           |           |               |           |
+|console.log(`File ${filename} is no longer watched`);  |           |               |           |
+
+*Paso 9:* Se retorna el valor en `output`.
+
+|   Stack       |   API     |   Queue       |   Output                                              |
+|:-------------------------------------------------------------------------------------------------:|
+|`callback()`   |           |               |                                                       |
+|               |           |               |console.log(`File ${filename} is no longer watched`);  |
+
+*Paso 10:* `watcher.on` se convierte en `callback` y pasa a la cola para ejecutarse.
+
+|   Stack   |   API     |   Queue       |   Output  |
+|:-------------------------------------------------:|
+|           |           |`callback()`   |           |
+
+*Paso 11:* Se añade el `callback` en la pila, ya que está vacía, y se ejecuta.
+
+|   Stack       |   API     |   Queue       |   Output  |
+|:-----------------------------------------------------:|
+|`callback()`   |           |               |           |
+
+*Paso 12:* Se añade la siguiente función a la pila y se ejecuta.
+
+|   Stack                                                   |   API     |   Queue       |   Output  |
+|:-------------------------------------------------------------------------------------------------:|
+|`callback()`                                               |           |               |           |
+|console.log(`File ${filename} has been modified somehow`); |           |               |           |
+
+*Paso 13:* La función que se ejecutó, retorna el valor en el `output`.
+
+|   Stack       |   API     |   Queue       |   Output                                                  |
+|:-----------------------------------------------------------------------------------------------------:|
+|`callback()`   |           |               |                                                           |
+|               |           |               |console.log(`File ${filename} has been modified somehow`); |
+
+- ¿Qué hace la función `access`?: Prueba los permisos de un usuario para el archivo o directorio especificado en la ruta que le pasamos.
+
+- ¿Para qué sirve el objeto `constants`?: "Devuelve un objeto que contiene constantes de uso común para el sistema de archivos operaciones". Es decir, nos garantiza poder acceder de manera predefinida al item (ejemplo: indicándole el archivo que queremos, el modo en el que queremos acceder....)
+
 ## Ejercicio 4
 
 **Desarrollo:**
