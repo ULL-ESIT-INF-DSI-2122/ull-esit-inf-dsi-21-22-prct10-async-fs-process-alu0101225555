@@ -108,6 +108,83 @@ alu0101225555
 
 - ¿Para qué sirve el objeto `constants`?: "Devuelve un objeto que contiene constantes de uso común para el sistema de archivos operaciones". Es decir, nos garantiza poder acceder de manera predefinida al item (ejemplo: indicándole el archivo que queremos, el modo en el que queremos acceder....)
 
+## Ejercicio 3
+
+**Desarrollo:**
+
+Para la resolución de este ejercicio hemos partido de la práctica 9. La principal diferencia es que este sólo ejecuta la opción `watch` implementada en el `main.ts`, donde se le pasa una ruta cómo parámetro:
+
+```
+const FM = new OperacionesNotas();
+/**
+ * Comando 'watch': observa cambios en directorio
+ */
+ yargs.command( {
+    command: 'watch',
+    describe: 'Observa cambios en un fichero',
+    builder: {
+        route: {
+            describe: 'Ruta para observar',
+            demandOption: true,
+            type: 'string',
+        },
+    },
+    handler(argv) {
+        if(typeof argv.route === "string") {
+            FM.watch(argv.route);
+        }else {
+            console.log(`ERROR`);
+        }
+    }
+});
+
+yargs.parse();
+```
+
+Además, hemos añadido la función `watch()` en `OpcionesNotas.ts` que será a la que llame el comando con mismo nombre. Dicho método muestra los cambios que sufre el directorio que pasamos como parámetro hasta que finalizamos el programa.
+
+```
+/**
+     * Método para "vigilar" cambios en el directorio
+     * @param ruta ruta para analizar
+     */
+    watch(ruta: string) {
+        const rutaExistente: boolean = existsSync(ruta);
+        const direcc = ruta;
+        const fichero = fs.readdirSync(direcc);
+
+        if (rutaExistente == true) {
+            fs.watch(direcc, (event: any, cont: string) => {
+                console.log(`Se están produciendo cambios`);
+                switch (event) {
+                    case 'cambio':
+                        console.log(`Se ha modificado el fichero` + cont);
+                        break;
+                    case 'renombrar':
+                        const existeFich: boolean = existsSync(`${ruta}/${cont}`);
+                        if (existeFich == true) {
+                            console.log(`Se ha añadidio el fichero` + cont);
+                        }else {
+                            console.log(`Se ha eliminado el fichero` + cont);
+                        }
+                        break;
+                }
+    
+                console.log(`El contenido del fichero es: ` + fichero);
+    
+            })
+
+        }else {
+            console.log(`ERROR. La ruta no existe`);
+        }
+
+    }
+```
+
+- ¿Cómo haría para mostrar, no solo el nombre, sino también el contenido del fichero, en el caso de que haya sido creado o modificado?: Llamando a alguna función que se encargue de leer el contenido y lo muestre cada vez que detecta cambios.
+
+- ¿Cómo haría para que no solo se observase el directorio de un único usuario sino todos los directorios correspondientes a los diferentes usuarios de la aplicación de notas?: Iniciando el método watch() en cada directorio posible a la vez.
+
 ## Ejercicio 4
 
 **Desarrollo:**

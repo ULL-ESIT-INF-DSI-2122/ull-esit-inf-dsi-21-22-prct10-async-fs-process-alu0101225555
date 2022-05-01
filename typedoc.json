@@ -3,7 +3,11 @@
         "./src/mod10/lectura.ts",
         "./src/mod10/suma.ts",
         "./src/ejercicio4/main.ts",
-        "./src/ejercicio4/LComands.ts"
+        "./src/ejercicio4/LComands.ts",
+        "./src/ejercicio3/main.ts",
+        "./src/ejercicio3/P9/OpcionesNota.ts",
+        "./src/ejercicio3/P9/Nota.ts",
+        "./src/ejercicio3/P9/main.ts"
     ],
     "out": "./docs"
 }
